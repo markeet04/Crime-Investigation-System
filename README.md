@@ -1,7 +1,7 @@
-# Court Case Management System
+# Crime Management System
 
 ## Overview
-A comprehensive court case management system implemented in Python using Object-Oriented Programming principles. The system manages legal cases, various judicial personnel, evidence tracking, and case proceedings through a secure database-driven architecture.
+A comprehensive Crime management system implemented in Python using Object-Oriented Programming principles. The system manages legal cases, various judicial personnel, evidence tracking, and case proceedings through a secure database-driven architecture.
 
 ## Features
 - Multi-user role support (Judge, Lawyer, Investigating Officer, Witness, Victim)
