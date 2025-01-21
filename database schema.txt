@@ -1,0 +1,594 @@
+CREATE TABLE Crime (
+       Crime_id INT PRIMARY KEY AUTO_INCREMENT,
+       Crime_location TEXT,
+       Crime_datetime DATETIME,
+       Crime_type VARCHAR(100),
+       Crime_description TEXT
+   );
+   
+   INSERT INTO Crime (Crime_id, Crime_location, Crime_datetime, Crime_type, Crime_description) VALUES
+    (1, 'Street No. 5, Satellite Town, Rawalpindi', '2024-05-09 10:30:00', 'Robbery', 'Armed robbery at a Jewelery Shop'),
+    (2, 'Sector G-9/1, Islamabad', '2024-05-10 15:45:00', 'Robbery', 'Residential burglary with stolen valuables'),
+    (3, 'Bahria Town Phase 4, Rawalpindi', '2024-05-11 08:20:00', 'Assault', 'Physical assault resulting in injuries'),
+    (4, 'Gulraiz Housing Society, Rawalpindi', '2024-05-12 12:10:00', 'Theft', 'Vehicle theft outside Home'),
+    (5, 'Sector I-8/2, Islamabad', '2024-05-13 09:00:00', 'Fraud', 'Financial fraud involving online transactions'),
+    
+    (6, 'Chaklala Scheme 3, Rawalpindi', '2024-05-14 17:30:00', 'Vandalism', 'Property vandalism outside Office'),
+    (7, 'Sector F-11/1, Islamabad', '2024-05-15 14:00:00', 'Drug Offense', 'Drug trafficking activity reported in the area'),
+    (8, 'PWD Housing Scheme, Islamabad', '2024-05-16 11:20:00', 'Kidnapping', 'Attempted kidnapping of a minor'),
+    (9, 'Dhoke Syedan, Rawalpindi', '2024-05-17 16:15:00', 'Murder', 'Murder case under investigation'),
+    (10, 'Pakistan Town Phase 1, Rawalpindi', '2024-05-18 13:40:00', 'Cybercrime', 'Identity theft and online scamming reported'),
+    
+    (11, 'G-6/3, Islamabad', '2024-05-19 10:55:00', 'Domestic Violence', 'Domestic dispute resulting in physical violence'),
+    (12, 'Air University, Rawalpindi', '2024-05-20 07:30:00',  'Sexual Assault', 'Reported case of sexual assault against a minor'),
+    (13, 'Centaurus Mall Apartments, Islamabad', '2024-05-21 19:00:00', 'Extortion', 'Extortion attempt against a local business owner'),
+    (14,  'Shalley Valley, Rawalpindi', '2024-05-22 22:15:00', 'Forgery', 'Forgery of official documents reported'),
+    (15, 'F-10/3, Islamabad', '2024-05-23 18:50:00', 'Murder', 'Murder case under investigation'),
+    
+    (16, 'Bahria Town Phase 8, Rawalpindi', '2024-05-24 20:05:00', 'Robbery', 'Armed robbery at a Grocerry Store'),
+    (17,  'Sector E-7, Islamabad', '2024-05-25 11:45:00', 'Assault', 'Physical assault resulting in injuries' ),
+    (18, 'Westridge 3, Rawalpindi', '2024-05-26 14:25:00', 'Theft', 'Vehicle theft outside Office'),
+    (19, 'Diplomatic Enclave, Islamabad', '2024-05-27 16:30:00', 'Terrorism',  'Suspected terrorist activity reported near diplomatic area'),
+    (20,  'Street No. 12, Chaklala Scheme 3, Rawalpindi', '2024-05-28 09:10:00', 'Murder', 'Murder case under investigation'),
+    
+    (21,  'Sector G-11/2, Islamabad', '2024-05-29 12:55:00', 'Blackmail', 'Attempted blackmail using compromising materials'),
+    (22, 'Rawalpindi Saddar', '2024-05-30 14:20:00',  'Sexual Assault', 'Reported case of sexual assault against a minor' ),
+    (23, 'Blue Area, Islamabad', '2024-06-01 18:00:00', 'Embezzlement', 'Financial embezzlement reported by a local company'),
+    (24, 'Saddar Bazaar, Rawalpindi', '2024-06-02 10:45:00', 'Forgery', 'Forgery of official documents reported'),
+    (25, 'G-13, Islamabad', '2024-06-03 15:30:00', 'Kidnapping', 'Attempted kidnapping of a minor');
+
+CREATE TABLE FIR (
+       FIR_id INT PRIMARY KEY AUTO_INCREMENT,
+       Crime_id INT,
+       F_name VARCHAR(75),
+       F_age INT,
+       F_gender VARCHAR(10),
+       F_contact VARCHAR(15),
+       F_address TEXT,
+       F_relation_with_victim VARCHAR(100),
+       FOREIGN KEY (Crime_id) REFERENCES Crime(Crime_id) ON DELETE CASCADE
+   );
+
+INSERT INTO FIR (FIR_id, Crime_id, F_name , F_age, F_gender, F_contact, F_address, F_relation_with_victim) VALUES
+(101, 1, 'Ali Khan', 32, 'Male', '+92 300 1234567', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'Self'),
+(102, 2,  'Sana Ahmed', 28, 'Female', '+92 321 2345678', 'Apartment No. 456, Sector G-9/1, Islamabad', 'Self'),
+(103, 3,  'Ahmed Hassan', 55, 'Male', '+92 333 3456789', 'House no 22, Bahria Town Phase 3, Rawalpindi', 'Father of Victim'),
+(104, 4, 'Aisha Malik', 22, 'Female', '+92 334 4567890', 'Gulraiz Housing Society, Rawalpindi', 'Self'),
+(105, 5, 'Usman Mahmood', 40, 'Male', '+92 300 5678901', 'Street No. 303, Sector G-8, Islamabad', 'Self'),
+
+(106, 6, 'Fahad Khan', 45, 'Male', '+92 321 6789012', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'Brother of Victim'),
+(107, 7, 'Inspector Bilal Khan', 47, 'Male', '+92 333 7890123', 'Apartment No. 505, Sector F-11/1, Islamabad', 'On duty Officer'),
+(108, 8, 'Saima Aslam', 30, 'Female', '+92 334 8901234', 'House No. 707, PWD Housing Scheme, Islamabad', 'Mother of Victim'),
+(109, 9, 'Hassan Ali', 50, 'Male', '+92 300 9012345', 'House No. 909, Dhoke Syedan, Rawalpindi', 'Father of Victim'),
+(110, 10,'Rabia Khan', 26, 'Female', '+92 321 0123456', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'Self'),
+
+(111, 11,'Farhan Siddique', 35, 'Male', '+92 333 1122334', 'Street No. 777, G-6/3, Islamabad', 'Neighbour of Victim'),
+(112, 12,'Ahmed Saeed', 19, 'Male', '+92 333 5857974', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'Friend of Victim'),
+(113, 13,'Noman Malik', 38, 'Male', '+92 300 3344556', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'Victim Business Partner'),
+(114, 14,'Ayesha Shahzad', 25, 'Female', '+92 321 4455667', 'House No. 333, Shalley Valley, Rawalpindi', 'Lawyer of Victim'),
+(115, 15,'Zubair Ahmed', 45, 'Male', '+92 333 5566778', 'Street No. 505, F-10/3, Islamabad', 'Brother of Victim'),
+
+(116, 16,'Haris Khan', 53, 'Male', '+92 334 6677889', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'Self'),
+(117, 17,'Kamran Malik', 33, 'Male', '+92 300 7788990', 'Apartment No. 707, Sector E-7, Islamabad', 'Victim Friend'),
+(118, 18,'Sadia Naeem', 28, 'Female', '+92 321 8899001', 'House No. 808, Westridge 3, Rawalpindi', 'Self'),
+(119, 19,'Inspector Aamir Shah', 40, 'Male', '+92 333 9900112', 'House No. 909,  Westridge 3, Rawalpindi', 'On duty Officer'),
+(120, 20,'Sanaullah Khan', 30, 'Male', '+92 334 0011223', 'House No. 1010, Street No. 12, Chaklala Scheme 3, Rawalpindi', 'Brother of Victim'),
+
+(121, 21,'Hira Nawaz', 31, 'Female', '+92 300 1122334', 'House No. 1111, Sector G-11/2, Islamabad', 'Self'),
+(122, 22,'Usama Khalid', 28, 'Male', '+92 321 2233445', 'Apartment No. 1212, Rawalpindi Saddar', 'Uncle of Victim'),
+(123, 23,'Sadia Akram', 35, 'Female', '+92 333 3344556', 'House No. 1313, Blue Area, Islamabad', 'Colleague of Victim'),
+(124, 24,'Waqar Ali', 46, 'Male', '+92 334 4455667', 'Street No. 1414, Saddar Bazaar, Rawalpindi', 'Lawyer of Victim'),
+(125, 25,'Haris Aslam', 29, 'Male', '+92 300 5566778', 'House No. 1515, G-13, Islamabad', 'Father of Victim');
+
+CREATE TABLE Case_info (
+       Case_info_id INT PRIMARY KEY AUTO_INCREMENT,
+       FIR_id INT,
+       Case_name VARCHAR(100),
+       Case_type VARCHAR(100),
+       Case_status VARCHAR(50),
+       Case_opened DATE,
+       Case_closed DATE,
+       Case_remarks VARCHAR(100),
+       Charges_filed VARCHAR(100),
+       Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+       FOREIGN KEY (Fir_id) REFERENCES FIR(Fir_id)
+   );
+  
+  INSERT INTO Case_info (Case_info_id, FIR_id, Case_name, Case_type, Case_status, Case_opened, Case_closed, Case_remarks, Charges_filed) VALUES
+(201, 101, 'Robbery Case', 'Robbery', 'Closed', '2023-05-10', '2023-06-20', 'Case closed after suspects were apprehended.', 'Robbery charges filed against suspects.'),
+(202, 102, 'Robbery Case', 'Robbery', 'Closed', '2023-06-15', '2023-07-25', 'Case resolved with the recovery of stolen items.', 'Robbery charges filed against suspects.'),
+(203, 103, 'Assault Case', 'Assault', 'Open', '2023-08-20', NULL, 'Case under active investigation.', 'Assault charges filed against suspects.'),
+(204, 104, 'Theft Case', 'Theft', 'Open', '2023-09-05', NULL, 'Case under active investigation.', 'Theft charges filed against suspects.'),
+(205, 105, 'Fraud Case', 'Fraud', 'Closed', '2023-10-01', '2023-11-15', 'The case ended after the victims were compensated.', 'Fraud charges filed against suspects.'),
+
+(206, 106, 'Vandalism Case', 'Vandalism', 'Closed', '2023-11-10', '2023-12-20', 'Case resolved with compensation for damages.', 'Vandalism charges filed against suspects.'),
+(207, 107, 'Drug Offense Case', 'Drug Offense', 'Open', '2024-01-15', NULL, 'Case under active investigation.', 'Drug offense charges filed against suspects.'),
+(208, 108, 'Kidnapping Case', 'Kidnapping', 'Open', '2024-02-20', NULL, 'Case under active investigation.', 'Kidnapping charges filed against suspects.'),
+(209, 109, 'Murder Case', 'Murder', 'Closed', '2024-03-05', '2024-04-15', 'Case closed after suspects convicted in court.', 'Murder charges filed against suspects.'),
+(210, 110, 'Cybercrime Case', 'Cybercrime', 'Open', '2024-04-10', NULL, 'Case under active investigation.', 'Cybercrime charges filed against suspects.'),
+
+(211, 111, 'Domestic Violence Case', 'Domestic Violence', 'Closed', '2024-05-05', '2024-06-20', 'Case closed after counseling provided to parties.', 'Domestic violence charges filed against suspects.'),
+(212, 112, 'Sexual Assault Case', 'Sexual Assault', 'Open', '2024-06-15', NULL, 'Case under active investigation.', 'Sexual assault charges filed against suspects.'),
+(213, 113, 'Extortion Case', 'Extortion', 'Open', '2024-07-20', NULL, 'Case under active investigation.', 'Extortion charges filed against suspects.'),
+(214, 114, 'Forgery Case', 'Forgery', 'Closed', '2024-08-05', '2024-09-15', 'Case closed after forged documents seized.', 'Forgery charges filed against suspects.'),
+(215, 115, 'Murder Case', 'Murder', 'Open', '2024-09-10', NULL, 'Case under active investigation.', 'Murder charges filed against suspects.'),
+
+(216, 116, 'Robbery Case', 'Robbery', 'Open', '2024-10-15', NULL, 'Case under active investigation.', 'Robbery charges filed against suspects.'),
+(217, 117, 'Assault Case', 'Assault', 'Closed', '2024-11-20', '2025-01-05', 'Case closed after suspects apprehended.', 'Assault charges filed against suspects.'),
+(218, 118, 'Theft Case', 'Theft', 'Open', '2025-01-15', NULL, 'Case under active investigation.', 'Theft charges filed against suspects.'),
+(219, 119, 'Terrorism Case', 'Terrorism', 'Open', '2025-02-20', NULL, 'Case under active investigation.', 'Terrorism charges filed against suspects.'),
+(220, 120, 'Murder Case', 'Murder', 'Closed', '2025-03-05', '2025-04-15', 'Case closed after suspects convicted in court.', 'Murder charges filed against suspects.'),
+
+(221, 121, 'Blackmail Case', 'Blackmail', 'Open', '2025-04-10', NULL, 'Case under active investigation.', 'Blackmail charges filed against suspects.'),
+(222, 122, 'Sexual Assault Case', 'Sexual Assault', 'Closed', '2025-05-15', '2025-06-30', 'Case closed after suspects apprehended.', 'Sexual assault charges filed against suspects.'),
+(223, 123, 'Embezzlement Case', 'Embezzlement', 'Open', '2025-07-20', NULL, 'Case under active investigation.', 'Embezzlement charges filed against suspects.'),
+(224, 124, 'Forgery Case', 'Forgery', 'Open', '2025-08-05', NULL, 'Case under active investigation.', 'Forgery charges filed against suspects.'),
+(225, 125, 'Kidnapping Case', 'Kidnapping', 'Closed', '2025-09-10', '2025-10-20', 'Case closed after suspects convicted in court.', 'Kidnapping charges filed against suspects.');
+
+CREATE TABLE Agency (
+       Agency_id INT PRIMARY KEY AUTO_INCREMENT,
+       Agency_name VARCHAR(75),
+       Agency_contact VARCHAR(75),
+       Agency_address TEXT,
+       Agency_expertise TEXT
+   );
+
+INSERT INTO Agency (Agency_id, Agency_name, Agency_contact, Agency_address, Agency_expertise) VALUES
+(301, 'Federal Investigation Agency (FIA)', '+92-51-9106384', 'Federal Investigation Agency Headquarters, G-9/4, Islamabad, Pakistan', 'cybercrime, human trafficking, money laundering, and immigration offenses'),
+(302, 'National Accountability Bureau (NAB)', '+92-51-111-622-622', 'NAB Headquarters, Shahrah-e-Jamhuriat, G-5/2, Islamabad, Pakistan', 'Investigating and prosecuting cases of corruption, financial mismanagement, embezzlement, white-collar crimes, and maladministration at the federal level'),
+(303, 'Anti-Narcotics Force (ANF)', '+92-51-9270173', 'Headquarters Anti Narcotics Force, Wavel lines, Chaklala Cantt, Rawalpindi, Pakistan', 'Combating narcotics smuggling, drug trafficking, drug abuse prevention, and implementing drug control measures'),
+(304, 'Federal Board of Revenue (FBR)', '+92-51-111-772-772', 'FBR House, Constitution Avenue, G-5, Islamabad', 'Investigating high-profile and complex criminal cases, including terrorism, organized crime, kidnapping, extortion'),
+(305, 'Punjab Police', '15', 'Central Police Office, Rawalpindi, Punjab, Pakistan', 'Maintaining law and order, investigating various crimes such as theft, assault, murder, kidnapping, drug trafficking, and organized crime within the province of Punjab'),
+(306, 'Islamabad Capital Territory Police', '+92-51-9261266', 'Police Lines, H-11, Islamabad', 'Law enforcement, crime investigation, maintaining public order, ensuring security in the Islamabad Capital Territory, including providing security to diplomatic missions and government installations.');
+
+CREATE TABLE Court (
+       Court_id INT PRIMARY KEY AUTO_INCREMENT,
+       Court_name VARCHAR(100),
+       Court_location TEXT ,
+       Court_level VARCHAR(100)
+   );
+   
+   INSERT INTO Court (Court_id, Court_name, Court_location, Court_level) VALUES
+    (2001, 'District and Sessions Court', 'Rawalpindi', 'District'),
+    (2002, 'High Court of Islamabad', 'Islamabad', 'High'),
+    (2003, 'Supreme Court of Pakistan', 'Islamabad', 'Supreme');
+
+CREATE TABLE Investigating_Officers (
+       Investigating_Officers_id INT PRIMARY KEY AUTO_INCREMENT,
+       Agency_id INT,
+       Case_info_id INT,
+       Batch_no INT,
+       Officer_name VARCHAR(50),
+       Officer_age INT,
+       Officer_gender VARCHAR(10),
+       Officer_contact VARCHAR(20),
+       Officer_address VARCHAR(100),
+       Officer_officer_rank VARCHAR(50),
+       Officer_position VARCHAR(50),
+       Officer_department VARCHAR(100),
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE,
+       FOREIGN KEY (Agency_id) REFERENCES Agency(Agency_id) ON DELETE CASCADE
+   );
+   
+   INSERT INTO Investigating_Officers (Investigating_Officers_id, Agency_id, Case_info_id, Batch_no, Officer_name, Officer_age, Officer_gender, Officer_contact, Officer_address, Officer_officer_rank, Officer_position, Officer_department) VALUES
+(401, 305, 201, 12345, 'Inspector Ali', 40, 'Male', '+92 300 1234567', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(402, 305, 202, 23456, 'Sub-Inspector Sarim', 35, 'Male', '+92 321 9876543', 'House No. 456, Sector G-9/1, Islamabad', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(403, 305, 203, 34567, 'Inspector Ahmed', 42, 'Male', '+92 333 5554444', 'House No. 22, Bahria Town Phase 4, Rawalpindi', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(404, 305, 204, 45678, 'Sub-Inspector Aliyan', 32, 'Male', '+92 334 9876543', 'Gulraiz Housing Society, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(405, 305, 205, 56789, 'Inspector Usman', 45, 'Male', '+92 300 9876543', 'Street No. 303, Sector I-8/2, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+
+(406, 305, 206, 67890, 'Sub-Inspector Fahad', 38, 'Male', '+92 333 1234567', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(407, 303, 207, 78901, 'Inspector Bilal', 37, 'Male', '+92 334 5554444', 'Apartment No. 505, Sector F-11/1, Islamabad', 'Inspector', 'Investigating Officer', 'Anti-Narcotics Force (ANF)'),
+(408, 305, 208, 89012, 'Sub-Inspector Saima', 33, 'Female', '+92 321 1234567', 'House No. 707, PWD Housing Scheme, Islamabad', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(409, 305, 209, 90123, 'Inspector Hassan', 48, 'Male', '+92 333 9876543', 'House No. 909, Dhoke Syedan, Rawalpindi', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(410, 301, 210, 12346, 'Sub-Inspector Rabia', 31, 'Female', '+92 334 1234567', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Federal Investigation Agency (FIA)'),
+
+(411, 305, 211, 23457, 'Inspector Farhan', 39, 'Male', '+92 300 5554444', 'Street No. 777, G-6/3, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(412, 305, 212, 34568, 'Sub-Inspector Saim', 36, 'Male', '+92 321 5554444', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(413, 305, 213, 45679, 'Inspector Noman', 43, 'Male', '+92 333 1234567', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(414, 305, 214, 56780, 'Sub-Inspector Ayesha', 34, 'Female', '+92 334 1234567', 'House No. 333, Shalley Valley, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(415, 305, 215, 67891, 'Inspector Zubair', 46, 'Male', '+92 300 1234567', 'Street No. 505, F-10/3, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+
+(416, 305, 216, 78902, 'Sub-Inspector Haris', 41, 'Male', '+92 321 9876543', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(417, 305, 217, 89013, 'Inspector Kamran', 37, 'Male', '+92 333 5554444', 'Apartment No. 707, Sector E-7, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(418, 305, 218, 90124, 'Sub-Inspector Sadia', 34, 'Female', '+92 334 9876543', 'House No. 808, Westridge 3, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(419, 304, 219, 12347, 'Inspector Aamir', 50, 'Male', '+92 300 9876543', 'House No. 909, Diplomatic Enclave, Islamabad', 'Inspector', 'Investigating Officer', 'Federal Board of Revenue (FBR)'),
+(420, 305, 220, 23458, 'Sub-Inspector Sanaullah', 39, 'Male', '+92 321 1234567', 'House No. 1010, Chaklala Scheme 3, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+
+(421, 305, 221, 34569, 'Inspector Hira', 36, 'Female', '+92 333 9876543', 'House No. 1111, Sector G-11/2, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police'),
+(422, 305, 222, 45670, 'Sub-Inspector Usama', 34, 'Male', '+92 334 1234567', 'Apartment No. 1212, Rawalpindi Saddar', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(423, 302, 223, 56781, 'Inspector Sadia', 40, 'Female', '+92 300 5554444', 'House No. 1313, Blue Area, Islamabad', 'Inspector', 'Investigating Officer', 'National Accountability Bureau (NAB)'),
+(424, 305, 224, 67892, 'Sub-Inspector Waqar', 38, 'Male', '+92 321 5554444', 'Street No. 1414, Saddar Bazaar, Rawalpindi', 'Sub-Inspector', 'Investigating Officer', 'Punjab Police'),
+(425, 305, 225, 78903, 'Inspector Haris', 42, 'Male', '+92 333 1234567', 'House No. 1515, G-13, Islamabad', 'Inspector', 'Investigating Officer', 'Punjab Police');
+
+   CREATE TABLE Evidence (
+       Evidence_id INT PRIMARY KEY AUTO_INCREMENT,
+       Case_info_id INT,
+       Evidence_type VARCHAR(100),
+       Evidence_name VARCHAR(100),
+       Evidence_found_location VARCHAR(100),
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE
+   );
+
+   INSERT INTO Evidence (Evidence_id, Case_info_id, Evidence_type, Evidence_name, Evidence_found_location) VALUES
+    (801, 201, 'Fingerprint', 'Fingerprint on the jewelry shop door', 'Street No. 5, Satellite Town, Rawalpindi'),
+    (802, 202, 'Footprint', 'Footprint at the scene of burglary', 'Sector G-9/1, Islamabad'),
+    (803, 203, 'CCTV Footage', 'CCTV footage of the assault', 'Bahria Town Phase 4, Rawalpindi'),
+    (804, 204, 'Vehicle License Plate', 'License plate of the stolen vehicle', 'Gulraiz Housing Society, Rawalpindi'),
+    (805, 205, 'Email Logs', 'Logs of fraudulent emails', 'Sector I-8/2, Islamabad'),
+    
+    (806, 206, 'Vandalized Property', 'Damaged property from vandalism', 'Chaklala Scheme 3, Rawalpindi'),
+    (807, 207, 'Drug Samples', 'Samples of confiscated drugs', 'Sector F-11/1, Islamabad'),
+    (808, 208, 'Eyewitness Account', 'Statement from eyewitness', 'PWD Housing Scheme, Islamabad'),
+    (809, 209, 'Forensic Report', 'Forensic report on murder weapon', 'Dhoke Syedan, Rawalpindi'),
+    (810, 210, 'IP Address Logs', 'Logs of cybercrime IP addresses', 'Pakistan Town Phase 1, Rawalpindi'),
+    
+    (811, 211, 'Domestic Dispute Report', 'Report on domestic violence incident', 'G-6/3, Islamabad'),
+    (812, 212, 'Medical Examination Report', 'Report on sexual assault victim', 'Gulshan-e-Iqbal, Rawalpindi'),
+    (813, 213, 'Extortion Note', 'Note demanding money', 'Centaurus Mall Apartments, Islamabad'),
+    (814, 214, 'Forgery Documents', 'Forged official documents', 'Shalley Valley, Rawalpindi'),
+    (815, 215, 'DNA Samples', 'DNA samples from crime scene', 'F-10/3, Islamabad'),
+    
+    (816, 216, 'Robbery Weapon', 'Weapon used in robbery', 'Bahria Town Phase 8, Rawalpindi'),
+    (817, 217, 'Medical Report', 'Report on assault injuries', 'Sector E-7, Islamabad'),
+    (818, 218, 'Surveillance Footage', 'Footage of theft incident', 'Westridge 3, Rawalpindi'),
+    (819, 219, 'Suspicious Items', 'Items found near terrorism site', 'Diplomatic Enclave, Islamabad'),
+    (820, 220, 'Murder Weapon', 'Weapon used in murder', 'Street No. 12, Chaklala Scheme 3, Rawalpindi'),
+    
+    (821, 221, 'Blackmail Evidence', 'Evidence of blackmail attempt', 'Sector G-11/2, Islamabad'),
+    (822, 222, 'Medical Examination Report', 'Report on sexual assault victim', 'Rawalpindi Saddar'),
+    (823, 223, 'Financial Records', 'Records of embezzlement', 'Blue Area, Islamabad'),
+    (824, 224, 'Forgery Documents', 'Forgery of official documents', 'Saddar Bazaar, Rawalpindi'),
+    (825, 225, 'Witness Statement', 'Statement from witness', 'G-13, Islamabad');
+
+
+CREATE TABLE Victim (
+         Victim_id INT PRIMARY KEY AUTO_INCREMENT,
+         Case_info_id INT,
+         Victim_name VARCHAR(50),
+		 Victim_age INT,
+         Victim_gender VARCHAR(10),
+         Victim_contact VARCHAR(20),
+		 Victim_status VARCHAR(20),
+         Victim_address VARCHAR(75),
+         Victim_bloodgroup VARCHAR(5),
+  FOREIGN KEY (Case_info_id) REFERENCES Case_info (Case_info_id) ON DELETE CASCADE
+);
+
+INSERT INTO Victim (Victim_id, Case_info_id, Victim_name, Victim_age, Victim_gender, Victim_contact, Victim_status, Victim_address, Victim_bloodgroup) VALUES
+(501, 201, 'Javed Khan', 35, 'Male', '+92 300 1234567', 'Alive', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'AB+'),
+(502, 202, 'Farah Ahmed', 30, 'Female', '+92 321 9876543', 'Alive', 'Apartment No. 456, Sector G-9/1, Islamabad', 'A-'),
+(503, 203, 'Nasir Hassan', 60, 'Male', '+92 333 5554444', 'Alive', 'House no 22, Bahria Town Phase 3, Rawalpindi', 'B+'),
+(504, 204, 'Sara Malik', 25, 'Female', '+92 334 9876543', 'Alive', 'Gulraiz Housing Society, Rawalpindi', 'O-'),
+(505, 205, 'Imran Mahmood', 45, 'Male', '+92 300 9876543', 'Alive', 'Street No. 303, Sector G-8, Islamabad', 'A+'),
+
+(506, 206, 'Amina Khan', 40, 'Female', '+92 333 1234567', 'Alive', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'B-'),
+(507, 207, 'Bilal Khan', 28, 'Male', '+92 334 5554444', 'Alive', 'Apartment No. 505, Sector F-11/1, Islamabad', 'AB+'),
+(508, 208, 'Nadia Aslam', 5, 'Female', '+92 321 1234567', 'Unknown', 'House No. 707, PWD Housing Scheme, Islamabad', 'A-'),
+(509, 209, 'Ali Hassan', 55, 'Male', '+92 333 9876543', 'Deceased', 'House No. 909, Dhoke Syedan, Rawalpindi', 'O+'),
+(510, 210, 'Sana Khan', 28, 'Female', '+92 334 1234567', 'Alive', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'A+'),
+
+(511, 211, 'Shahid Siddique', 40, 'Male', '+92 300 5554444', 'Alive', 'Street No. 777, G-6/3, Islamabad', 'B-'),
+(512, 212, 'Muhammad Abu Bakar Ahmed', 20, 'Male', '+92 333 5857974', 'Alive', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'O+'),
+(513, 213, 'Ahmed Malik', 40, 'Male', '+92 333 1234567', 'Alive', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'A-'),
+(514, 214, 'Maria Shahzad', 28, 'Female', '+92 334 1234567', 'Alive', 'House No. 333, Shalley Valley, Rawalpindi', 'B+'),
+(515, 215, 'Kamran Ahmed', 50, 'Male', '+92 300 1234567', 'Deceased', 'Street No. 505, F-10/3, Islamabad', 'AB-'),
+
+(516, 216, 'Tariq Khan', 55, 'Male', '+92 321 9876543', 'Alive', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'A+'),
+(517, 217, 'Nida Malik', 35, 'Female', '+92 333 5554444', 'Alive', 'Apartment No. 707, Sector E-7, Islamabad', 'O+'),
+(518, 218, 'Sadia Naeem', 30, 'Female', '+92 334 9876543', 'Alive', 'House No. 808, Westridge 3, Rawalpindi', 'A-'),
+(519, 219, 'Aamir Shah', 40, 'Male', '+92 300 9876543', 'Alive', 'House No. 909, Diplomatic Enclave, Islamabad', 'B+'),
+(520, 220, 'Sabaullah Khan', 30, 'Male', '+92 321 1234567', 'Deceased', 'House No. 1010, Street No. 12, Chaklala Scheme 3, Rawalpindi', 'AB-'),
+
+(521, 221, 'Hira Nawaz', 31, 'Female', '+92 333 9876543', 'Alive', 'House No. 1111, Sector G-11/2, Islamabad', 'O-'),
+(522, 222, 'Usama Khalid', 8, 'Male', '+92 334 1234567', 'Alive', 'Apartment No. 1212, Rawalpindi Saddar', 'B-'),
+(523, 223, 'Sadia Akram', 35, 'Female', '+92 300 5554444', 'Alive', 'House No. 1313, Blue Area, Islamabad', 'A+'),
+(524, 224, 'Waqar Ali', 46, 'Male', '+92 321 5554444', 'Alive', 'Street No. 1414, Saddar Bazaar, Rawalpindi', 'AB+'),
+(525, 225, 'Haris Aslam', 9, 'Male', '+92 333 1234567', 'Unknown', 'House No. 1515, G-13, Islamabad', 'O+');
+
+CREATE TABLE Suspects (
+       Suspects_id INT PRIMARY KEY AUTO_INCREMENT,
+	   Case_info_id INT,
+       Evidence_id INT,
+       Suspect_name VARCHAR(100),
+       Suspect_age INT,
+       Suspect_gender VARCHAR(10),
+       Suspect_contact VARCHAR(20),
+       Suspect_address VARCHAR(100),
+       Suspect_statement TEXT,
+       Suspect_past_criminal_record TEXT,
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE,
+       FOREIGN KEY (Evidence_id) REFERENCES Evidence(Evidence_id) ON DELETE CASCADE
+   );
+
+   INSERT INTO Suspects (Suspects_id, Case_info_id, Evidence_id, Suspect_name, Suspect_age, Suspect_gender, Suspect_contact, Suspect_address, Suspect_statement, Suspect_past_criminal_record) VALUES
+    (601, 201, 801, 'Amir Khan', 40, 'Male', '+92 300 1234567', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'I have no involvement in the crime.', 'No previous criminal record found.'),
+    (602, 202, 802, 'Faisal Ahmed', 35, 'Male', '+92 321 9876543', 'Apartment No. 456, Sector G-9/1, Islamabad', 'I was not present at the scene.', 'No previous criminal record found.'),
+    (603, 203, 803, 'Sohail Hassan', 50, 'Male', '+92 333 5554444', 'House no 22, Bahria Town Phase 3, Rawalpindi', 'I have no knowledge of the incident.', 'No previous criminal record found.'),
+    (604, 204, 804, 'Adeel Malik', 30, 'Male', '+92 334 9876543', 'Gulraiz Housing Society, Rawalpindi', 'I was out of the city during that time.', 'No previous criminal record found.'),
+    (605, 205, 805, 'Khalid Mahmood', 45, 'Male', '+92 300 9876543', 'Street No. 303, Sector G-8, Islamabad', 'I am innocent and have nothing to do with the crime.', 'No previous criminal record found.'),
+    
+    (606, 206, 806, 'Tahir Khan', 42, 'Male', '+92 333 1234567', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'I was at work when the incident happened.', 'No previous criminal record found.'),
+    (607, 207, 807, 'Asad Khan', 28, 'Male', '+92 334 5554444', 'Apartment No. 505, Sector F-11/1, Islamabad', 'I have no information about the crime.', 'No previous criminal record found.'),
+    (608, 208, 808, 'Nadeem Aslam', 33, 'Male', '+92 321 1234567', 'House No. 707, PWD Housing Scheme, Islamabad', 'I am innocent and have nothing to do with the incident.', 'No previous criminal record found.'),
+    (609, 209, 809, 'Bilal Ali', 55, 'Male', '+92 333 9876543', 'House No. 909, Dhoke Syedan, Rawalpindi', 'I have no involvement in the alleged crime.', 'No previous criminal record found.'),
+    (610, 210, 810, 'Rizwan Khan', 26, 'Male', '+92 334 1234567', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'I am innocent and have no connection to the crime.', 'No previous criminal record found.'),
+    
+    (611, 211, 811, 'Zahid Siddique', 37, 'Male', '+92 300 5554444', 'Street No. 777, G-6/3, Islamabad', 'I was not present at the location when the incident occurred.', 'No previous criminal record found.'),
+    (612, 212, 812, 'Zaki Haider', 19, 'Male', '+92 336 1960147', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'I am not involved in the crime.', 'Criminal record of similar crimes found.'),
+    (613, 213, 813, 'Ahsan Malik', 36, 'Male', '+92 333 1234567', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'I deny any involvement in the alleged extortion.', 'No previous criminal record found.'),
+    (614, 214, 814, 'Mubashir Shahzad', 30, 'Male', '+92 334 1234567', 'House No. 333, Shalley Valley, Rawalpindi', 'I was not present at the location when the forgery was reported.', 'No previous criminal record found.'),
+    (615, 215, 815, 'Azeem Ahmed', 48, 'Male', '+92 300 1234567', 'Street No. 505, F-10/3, Islamabad', 'I have no knowledge or involvement in the murder case.', 'No previous criminal record found.'),
+    
+    (616, 216, 816, 'Yasir Khan', 52, 'Male', '+92 321 9876543', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'I was not present at the scene of the robbery.', 'No previous criminal record found.'),
+    (617, 217, 817, 'Nasir Malik', 32, 'Male', '+92 333 5554444', 'Apartment No. 707, Sector E-7, Islamabad', 'I deny any involvement in the assault case.', 'No previous criminal record found.'),
+    (618, 218, 818, 'Zain Naeem', 29, 'Male', '+92 334 9876543', 'House No. 808, Westridge 3, Rawalpindi', 'I have nothing to do with the reported theft.', 'No previous criminal record found.'),
+    (619, 219, 819, 'Adnan Shah', 38, 'Male', '+92 300 9876543', 'House No. 909, Diplomatic Enclave, Islamabad', 'I was not involved in any terrorist activity.', 'No previous criminal record found.'),
+    (620, 220, 820, 'Faisal Khan', 32, 'Male', '+92 321 1234567', 'House No. 1010, Street No. 12, Chaklala Scheme 3, Rawalpindi', 'I am innocent and have no involvement in the murder case.', 'No previous criminal record found.'),
+    
+    (621, 221, 821, 'Imran Nawaz', 35, 'Male', '+92 333 9876543', 'House No. 1111, Sector G-11/2, Islamabad', 'I deny the allegations against me.', 'No previous criminal record found.'),
+    (622, 222, 822, 'Ali Khalid', 30, 'Male', '+92 334 1234567', 'Apartment No. 1212, Rawalpindi Saddar', 'I have no knowledge of the reported sexual assault.', 'No previous criminal record found.'),
+    (623, 223, 823, 'Sohail Akram', 40, 'Male', '+92 300 5554444', 'House No. 1313, Blue Area, Islamabad', 'I am innocent and deny any involvement in the embezzlement case.', 'No previous criminal record found.'),
+    (624, 224, 824, 'Zubair Ali', 45, 'Male', '+92 321 5554444', 'Street No. 1414, Saddar Bazaar, Rawalpindi', 'I was not involved in any forgery.', 'No previous criminal record found.'),
+    (625, 225, 825, 'Ahmed Aslam', 28, 'Male', '+92 333 1234567', 'House No. 1515, G-13, Islamabad', 'I deny the allegations of attempted kidnapping.', 'No previous criminal record found.');
+
+
+CREATE TABLE Witness (
+       Witness_id INT PRIMARY KEY AUTO_INCREMENT,
+       Case_info_id INT,
+       Witness_name VARCHAR(50),
+       Witness_age INT,
+       Witness_gender VARCHAR(10),
+       Witness_contact VARCHAR(20),
+       Witness_address TEXT,
+       Witness_statement TEXT,
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE
+   );
+
+   INSERT INTO Witness (Witness_id, Case_info_id, Witness_name, Witness_age, Witness_gender, Witness_contact, Witness_address, Witness_statement) VALUES
+    (701, 201, 'Sara Khan', 35, 'Female', '+92 300 1234567', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'I witnessed the robbery at the jewelry shop.'),
+    (702, 202, 'Ali Raza', 40, 'Male', '+92 321 9876543', 'Apartment No. 456, Sector G-9/1, Islamabad', 'I saw the burglary taking place in the neighborhood.'),
+    (703, 203, 'Fatima Hassan', 45, 'Female', '+92 333 5554444', 'House no 22, Bahria Town Phase 3, Rawalpindi', 'I saw the assault happening in front of my house.'),
+    (704, 204, 'Zoha Malik', 28, 'Female', '+92 334 9876543', 'Gulraiz Housing Society, Rawalpindi', 'I observed the theft of the vehicle.'),
+    (705, 205, 'Asad Mahmood', 50, 'Male', '+92 300 9876543', 'Street No. 303, Sector G-8, Islamabad', 'I noticed the fraudulent activity online.'),
+    
+    (706, 206, 'Hira Khan', 38, 'Female', '+92 333 1234567', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'I witnessed the vandalism at the office building.'),
+    (707, 207, 'Bilal Ahmed', 32, 'Male', '+92 334 5554444', 'Apartment No. 505, Sector F-11/1, Islamabad', 'I saw the drug trafficking activity in my area.'),
+    (708, 208, 'Sadia Aslam', 48, 'Female', '+92 321 1234567', 'House No. 707, PWD Housing Scheme, Islamabad', 'I observed the attempted kidnapping of the child.'),
+    (709, 209, 'Hassan Ali', 55, 'Male', '+92 333 9876543', 'House No. 909, Dhoke Syedan, Rawalpindi', 'I witnessed the murder.'),
+    (710, 210, 'Rabia Khan', 30, 'Female', '+92 334 1234567', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'I observed the cybercrime activities.'),
+    
+    (711, 211, 'Sadia Siddique', 42, 'Female', '+92 300 5554444', 'Street No. 777, G-6/3, Islamabad', 'I saw the domestic violence incident.'),
+    (712, 212, 'Adeel Akhtar', 37, 'Male', '+92 321 5554444', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'I witnessed the sexual assault against the minor.'),
+    (713, 213, 'Aisha Malik', 25, 'Female', '+92 333 1234567', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'I observed the extortion attempt.'),
+    (714, 214, 'Usman Shahzad', 28, 'Male', '+92 334 1234567', 'House No. 333, Shalley Valley, Rawalpindi', 'I witnessed the forgery of documents.'),
+    (715, 215, 'Saima Ahmed', 45, 'Female', '+92 300 1234567', 'Street No. 505, F-10/3, Islamabad', 'I observed the murder.'),
+    
+    (716, 216, 'Amir Siddique', 52, 'Male', '+92 321 9876543', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'I witnessed the robbery at the grocery store.'),
+    (717, 217, 'Nadia Malik', 30, 'Female', '+92 333 5554444', 'Apartment No. 707, Sector E-7, Islamabad', 'I saw the assault taking place.'),
+    (718, 218, 'Zara Naeem', 35, 'Female', '+92 334 9876543', 'House No. 808, Westridge 3, Rawalpindi', 'I witnessed the theft.'),
+    (719, 219, 'Sadia Shah', 38, 'Female', '+92 300 9876543', 'House No. 909, Diplomatic Enclave, Islamabad', 'I saw the suspected terrorist activity near the diplomatic area.'),
+    (720, 220, 'Ali Aslam', 32, 'Male', '+92 321 1234567', 'House No. 1010, Street No. 12, Chaklala Scheme 3, Rawalpindi', 'I witnessed the murder.'),
+    
+    (721, 221, 'Imran Nawaz', 35, 'Male', '+92 333 9876543', 'House No. 1111, Sector G-11/2, Islamabad', 'I saw the attempted blackmail.'),
+    (722, 222, 'Saba Khalid', 30, 'Female', '+92 334 1234567', 'Apartment No. 1212, Rawalpindi Saddar', 'I witnessed the sexual assault against the minor.'),
+    (723, 223, 'Nida Akram', 40, 'Female', '+92 300 5554444', 'House No. 1313, Blue Area, Islamabad', 'I observed the financial embezzlement by a local company.'),
+    (724, 224, 'Zubair Ali', 45, 'Male', '+92 321 5554444', 'Street No. 1414, Saddar Bazaar, Rawalpindi', 'I witnessed the forgery of official documents.'),
+    (725, 225, 'Ahmed Aslam', 28, 'Male', '+92 333 1234567', 'House No. 1515, G-13, Islamabad', 'I deny the allegations of attempted kidnapping.');
+
+   CREATE TABLE Forensic (
+       Forensic_id INT PRIMARY KEY AUTO_INCREMENT,
+       Evidence_id INT,
+       Forensic_analyst_name VARCHAR(100),
+       Forensic_analysis_date DATE,
+       Forensic_lab VARCHAR(100),
+       Forensic_analysis_result TEXT,
+       FOREIGN KEY (Evidence_id) REFERENCES Evidence(Evidence_id) ON DELETE CASCADE
+   );
+
+   INSERT INTO Forensic (Forensic_id, Evidence_id, Forensic_analyst_name, Forensic_analysis_date, Forensic_lab, Forensic_analysis_result) VALUES
+    (901, 801, 'Dr. Ali Raza', '2024-05-10', 'Fingerprint Lab', 'Fingerprint matched with suspect Ali Khan'),
+    (902, 802, 'Dr. Sara Ahmed', '2024-05-11', 'Forensic Lab A', 'Footprint analysis inconclusive'),
+    (903, 803, 'Dr. Kamran Ali', '2024-05-12', 'Assault Investigation Lab', 'Assault matches with suspect description'),
+    (904, 804, 'Dr. Fatima Khan', '2024-05-13', 'Forensic Lab B', 'No significant findings on the license plate'),
+    (905, 805, 'Dr. Ahmed Hassan', '2024-05-14', 'Cybercrime Lab', 'Email logs indicate fraudulent activity'),
+    
+    (906, 806, 'Dr. Aisha Malik', '2024-05-15', 'Vandalism Investigation Lab', 'Vandalism matches with suspect Fahad Khan'),
+    (907, 807, 'Dr. Usman Ali', '2024-05-16', 'Drug Analysis Lab', 'Drug samples identified as cocaine'),
+    (908, 808, 'Dr. Sana Aslam', '2024-05-17', 'Eyewitness Testimony Lab', 'No conclusive evidence from eyewitness statement'),
+    (909, 809, 'Dr. Hassan Mahmood', '2024-05-18', 'Homicide Investigation Lab', 'Forensic report confirms murder weapon'),
+    (910, 810, 'Dr. Rabia Khan', '2024-05-19', 'Cybercrime Lab', 'IP address logs traced to suspect location'),
+    
+    (911, 811, 'Dr. Farhan Siddique', '2024-05-20', 'Domestic Violence Lab', 'No significant findings in domestic dispute report'),
+    (912, 812, 'Dr. Saim Akhtar', '2024-05-21', 'Sexual Assault Examination Lab', 'Medical report confirms sexual assault'),
+    (913, 813, 'Dr. Noman Malik', '2024-05-22', 'Document Analysis Lab', 'Extortion note matches suspect handwriting'),
+    (914, 814, 'Dr. Ayesha Shahzad', '2024-05-23', 'Forgery Analysis Lab', 'Forgery documents analyzed for authenticity'),
+    (915, 815, 'Dr. Zubair Ahmed', '2024-05-24', 'DNA Analysis Lab', 'DNA samples match suspect profile'),
+    
+    (916, 816, 'Dr. Haris Khan', '2024-05-25', 'Forensic Lab C', 'Robbery weapon identified as a handgun'),
+    (917, 817, 'Dr. Kamran Malik', '2024-05-26', 'Assault Investigation Lab', 'Assault injuries consistent with the report'),
+    (918, 818, 'Dr. Sadia Naeem', '2024-05-27', 'Surveillance Lab', 'Surveillance footage analyzed for suspect identification'),
+    (919, 819, 'Dr. Aamir Shah', '2024-05-28', 'Forensic Lab D', 'Suspicious items sent for further analysis'),
+    (920, 820, 'Dr. Sanaullah Khan', '2024-05-29', 'Homicide Investigation Lab', 'Murder weapon matches with forensic report'),
+    
+    (921, 821, 'Dr. Hira Nawaz', '2024-05-30', 'Blackmail Investigation Lab', 'Blackmail evidence analyzed for authenticity'),
+    (922, 822, 'Dr. Usama Khalid', '2024-05-31', 'Sexual Assault Examination Lab', 'Sexual assault confirmed through medical examination'),
+    (923, 823, 'Dr. Sadia Akram', '2024-06-01', 'Financial Investigation Lab', 'Financial records analyzed for embezzlement evidence'),
+    (924, 824, 'Dr. Waqar Ali', '2024-06-02', 'Forgery Analysis Lab', 'Forgery documents verified as counterfeit'),
+    (925, 825, 'Dr. Haris Aslam', '2024-06-03', 'Eyewitness Testimony Lab', 'Witness statement analyzed for credibility');
+
+     CREATE TABLE Judge (
+       Judge_id INT PRIMARY KEY AUTO_INCREMENT,
+       Court_id INT,
+       Judge_name VARCHAR(50),
+       Judge_appointment VARCHAR(50),
+       Judge_gender VARCHAR(10),
+	   Case_info_id INT,
+       judge_contact VARCHAR (20),
+       FOREIGN KEY (Court_id) REFERENCES Court(Court_id) ON DELETE CASCADE,
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE
+   );
+
+	INSERT INTO Judge (Court_id, Judge_name, Judge_appointment, Judge_gender, Case_info_id, judge_contact) VALUES
+(2001, 'Justice Ali Hassan', 'District and Sessions Court Judge', 'Male', 201, '+92 300 1234567'),
+(2002, 'Justice Sana Ahmed', 'High Court Judge', 'Female', 202, '+92 321 2345678'),
+(2003, 'Justice Fahad Khan', 'Supreme Court of Pakistan', 'Male', 203, '+92 333 3456789'),
+(2002, 'Justice Fatima Khan', 'High Court Judge', 'Female', 204, '+92 334 4567890'),
+(2002, 'Justice Ahmed Hassan', 'High Court Judge', 'Male', 205, '+92 300 5678901'),
+
+(2001, 'Judge Ayesha Malik', 'District Judge', 'Female', 206, '+92 321 6789012'),
+(2001, 'Judge Usman Ali', 'District Judge', 'Male', 207, '+92 333 7890123'),
+(2001, 'Judge Sana Aslam', 'District Judge', 'Female', 208, '+92 334 8901234'),
+(2001, 'Judge Hassan Mahmood', 'District Judge', 'Male', 209, '+92 300 9012345'),
+(2001, 'Judge Rabia Khan', 'District Judge', 'Female', 210, '+92 321 0123456'),
+
+(2001, 'Judge Farhan Siddique', 'Magistrate', 'Male', 211, '+92 333 2345678'),
+(2001, 'Judge Saim Akhtar', 'Magistrate', 'Male', 212, '+92 334 3456789'),
+(2001, 'Judge Noman Malik', 'Magistrate', 'Male', 213, '+92 300 4567890'),
+(2001, 'Judge Ayesha Shahzad', 'Magistrate', 'Female', 214, '+92 321 5678901'),
+(2001, 'Judge Zubair Ahmed', 'Magistrate', 'Male', 215, '+92 333 6789012'),
+
+(2002, 'Justice Kamran Ali', 'High Court Judge', 'Male', 216, '+92 334 7890123'),
+(2002, 'Justice Sara Khan', 'High Court Judge', 'Female', 217, '+92 300 8901234'),
+(2003, 'Justice Naeem Ahmed', 'Supreme Court of Pakistan', 'Male', 218, '+92 321 9012345'),
+(2002, 'Justice Hira Malik', 'High Court Judge', 'Female', 219, '+92 333 0123456'),
+(2002, 'Justice Waqar Aslam', 'High Court Judge', 'Male', 220, '+92 334 1234567'),
+
+(2001, 'Judge Aamir Shah', 'District Judge', 'Male', 221, '+92 300 2345678'),
+(2001, 'Judge Sadia Naeem', 'District Judge', 'Female', 222, '+92 321 3456789'),
+(2001, 'Judge Haris Ali', 'District Judge', 'Male', 223, '+92 333 4567890'),
+(2001, 'Judge Sanaullah Khan', 'District Judge', 'Male', 224, '+92 334 5678901'),
+(2001, 'Judge Maria Akram', 'District Judge', 'Female', 225, '+92 300 6789012');
+
+   CREATE TABLE Lawyer (
+       Lawyer_id INT PRIMARY KEY AUTO_INCREMENT,
+       case_info_id INT,
+       Lawyer_License_no INT,
+       Lawyer_name VARCHAR(100),
+       Lawyer_gender VARCHAR(10),
+       Lawyer_address TEXT,
+       Lawyer_contact VARCHAR(20),
+       Lawyer_fee DECIMAL(10,2),
+       Authorized_court VARCHAR(30),
+       Lawyer_total_cases INT,
+       Lawyer_win_loss_ratio DECIMAL(5,2),
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(Case_info_id) ON DELETE CASCADE
+   );
+
+INSERT INTO Lawyer (Lawyer_id, case_info_id, Lawyer_License_no, Lawyer_name, Lawyer_gender, Lawyer_address, Lawyer_contact, Lawyer_fee, Authorized_court, Lawyer_total_cases, Lawyer_win_loss_ratio) VALUES
+(4001, 201, 202312, 'Ali Raza', 'Male', 'House No. 10, Street No. 3, Satellite Town, Rawalpindi', '+92 300 1234567', 50000.00, 'District Court Rawalpindi', 50, 0.75),
+(4002, 202, 201987, 'Sadia Khan', 'Female', 'Flat No. 20, Block C, F-10, Islamabad', '+92 321 9876543', 70000.00, 'High Court Islamabad', 70, 0.85),
+(4003, 203, 201525, 'Ahmed Ali', 'Male', 'House No. 15, Street No. 5, Bahria Town Phase 4, Rawalpindi', '+92 333 5554444', 55000.00, 'District Court Rawalpindi', 60, 0.70),
+(4004, 204, 202478, 'Hira Malik', 'Female', 'Apartment No. 25, Sector G-9/1, Islamabad', '+92 334 9876543', 65000.00, 'High Court Islamabad', 80, 0.90),
+(4005, 205, 201234, 'Kamran Abbas', 'Male', 'House No. 30, Street No. 7, Gulraiz Housing Society, Rawalpindi', '+92 300 9876543', 60000.00, 'District Court Rawalpindi', 55, 0.80),
+
+(4006, 206, 201333, 'Sana Aslam', 'Female', 'Flat No. 12, Block D, G-8, Islamabad', '+92 333 1234567', 75000.00, 'High Court Islamabad', 90, 0.95),
+(4007, 207, 202102, 'Fahad Khan', 'Male', 'House No. 40, Street No. 9, Chaklala Scheme 3, Rawalpindi', '+92 334 5554444', 50000.00, 'District Court Rawalpindi', 65, 0.75),
+(4008, 208, 202521, 'Rabia Asif', 'Female', 'House No. 18, Street No. 4, PWD Housing Scheme, Islamabad', '+92 321 1234567', 80000.00, 'High Court Islamabad', 75, 0.85),
+(4009, 209, 201809, 'Nasir Ahmed', 'Male', 'House No. 50, Street No. 10, Dhoke Syedan, Rawalpindi', '+92 333 9876543', 55000.00, 'District Court Rawalpindi', 70, 0.80),
+(4010, 210, 202102, 'Saba Khan', 'Female', 'Apartment No. 35, Sector G-9/1, Islamabad', '+92 334 1234567', 70000.00, 'High Court Islamabad', 85, 0.90),
+
+(4011, 211, 202312, 'Adnan Riaz', 'Male', 'House No. 60, Street No. 12, Pakistan Town Phase 1, Rawalpindi', '+92 300 5554444', 60000.00, 'District Court Rawalpindi', 80, 0.85),
+(4012, 212, 201987, 'Sadia Rehman', 'Female', 'Flat No. 30, Block B, I-8/3, Islamabad', '+92 321 5554444', 75000.00, 'High Court Islamabad', 95, 0.95),
+(4013, 213, 201525, 'Ali Akbar', 'Male', 'House No. 70, Street No. 15, Gulshan-e-Iqbal, Rawalpindi', '+92 333 1234567', 65000.00, 'District Court Rawalpindi', 90, 0.90),
+(4014, 214, 202478, 'Hira Asif', 'Female', 'House No. 40, Street No. 8, Centaurus Mall Apartments, Islamabad', '+92 334 1234567', 80000.00, 'High Court Islamabad', 100, 0.98),
+(4015, 215, 201234, 'Zafar Iqbal', 'Male', 'Flat No. 25, Block A, Shalley Valley, Rawalpindi', '+92 300 1234567', 60000.00, 'District Court Rawalpindi', 85, 0.88),
+
+(4016, 216, 201333, 'Hina Riaz', 'Female', 'House No. 80, Street No. 18, F-10/4, Islamabad', '+92 321 9876543', 75000.00, 'High Court Islamabad', 105, 0.96),
+(4017, 217, 202102, 'Saad Raza', 'Male', 'House No. 90, Street No. 20, Bahria Town Phase 8, Rawalpindi', '+92 334 5554444', 55000.00, 'District Court Rawalpindi', 95, 0.88),
+(4018, 218, 202521, 'Rabia Farooq', 'Female', 'Flat No. 15, Block C, Sector E-7, Islamabad', '+92 333 5554444', 80000.00, 'High Court Islamabad', 110, 0.97),
+(4019, 219, 201809, 'Usman Ahmed', 'Male', 'House No. 100, Street No. 25, Westridge 3, Rawalpindi', '+92 334 9876543', 65000.00, 'District Court Rawalpindi', 100, 0.90),
+(4020, 220, 202102, 'Sadia Javed', 'Female', 'House No. 110, Street No. 30, Diplomatic Enclave, Islamabad', '+92 300 9876543', 75000.00, 'High Court Islamabad', 115, 0.98),
+
+(4021, 221, 201987, 'Faisal Khan', 'Male', 'Flat No. 40, Block D, G-6/2, Islamabad', '+92 321 1234567', 70000.00, 'High Court Islamabad', 120, 0.95),
+(4022, 222, 201525, 'Nida Malik', 'Female', 'House No. 45, Street No. 20, Sector G-11/2, Islamabad', '+92 333 9876543', 75000.00, 'High Court Islamabad', 125, 0.97),
+(4023, 223, 202478, 'Ahsan Ali', 'Male', 'House No. 55, Street No. 10, Rawalpindi Saddar', '+92 334 1234567', 60000.00, 'District Court Rawalpindi', 105, 0.90),
+(4024, 224, 201234, 'Sadia Nasir', 'Female', 'Flat No. 10, Block B, Blue Area, Islamabad', '+92 300 5554444', 80000.00, 'High Court Islamabad', 130, 0.98),
+(4025, 225, 201333, 'Rizwan Ahmed', 'Male', 'House No. 35, Street No. 15, G-13/4, Islamabad', '+92 321 5554444', 65000.00, 'High Court Islamabad', 110, 0.92);
+
+   CREATE TABLE Article (
+       Article_id INT PRIMARY KEY AUTO_INCREMENT,
+       Article_name VARCHAR(100),
+       Article_number VARCHAR(50),
+       punishment_type VARCHAR(100),
+       punishment_time_period INT
+   );
+ 
+ INSERT INTO Article (Article_id, Article_name, Article_number, Punishment_type, Punishment_time_period) VALUES
+(5001, 'Robbery', 'Article 392', 'Imprisonment and fine', 10),
+(5002, 'Assault', 'Article 352', 'Imprisonment or fine or both', 3),
+(5003, 'Theft', 'Article 379', 'Imprisonment and fine', 5),
+(5004, 'Fraud', 'Article 420', 'Imprisonment and fine', 7),
+(5005, 'Vandalism', 'Article 425', 'Imprisonment or fine or both', 2),
+
+(5006, 'Drug Offense', 'Control of Narcotic Substances Act, 1997', 'Imprisonment and fine', 10),
+(5007, 'Kidnapping', 'Article 365-B', 'Imprisonment and fine', 14),
+(5008, 'Murder', 'Article 302', 'Death penalty or life imprisonment', NULL),
+(5009, 'Cybercrime', 'Prevention of Electronic Crimes Act, 2016', 'Imprisonment and fine', 7),
+(5010, 'Domestic Violence', 'Domestic Violence Act, 2012', 'Imprisonment and fine', 3),
+
+(5011, 'Sexual Assault', 'Article 375', 'Imprisonment and fine', 10),
+(5012, 'Extortion', 'Article 384', 'Imprisonment and fine', 7),
+(5013, 'Forgery', 'Article 471', 'Imprisonment and fine', 5),
+(5014, 'Terrorism', 'Anti-Terrorism Act, 1997', 'Death penalty or imprisonment', NULL),
+(5015, 'Blackmail', 'Article 292', 'Imprisonment and fine', 5),
+(5016, 'Embezzlement', 'Article 409', 'Imprisonment and fine', 7);
+
+CREATE TABLE Criminalrecord (
+       Criminalrecord_id INT PRIMARY KEY AUTO_INCREMENT,
+       Case_info_id INT,
+       Article_id INT,
+       Criminal_name VARCHAR(100),
+       Criminal_age INT,
+       Criminal_gender VARCHAR(10),
+       Criminal_contact VARCHAR(20),
+       Criminal_address TEXT,
+       Criminal_status VARCHAR(20),
+       FOREIGN KEY (Case_info_id) REFERENCES Case_info(case_info_id) ON DELETE CASCADE,
+       FOREIGN KEY (Article_id) REFERENCES Article(Article_id) ON DELETE CASCADE
+       );
+	
+	INSERT INTO Criminalrecord (Criminalrecord_id, Case_info_id, Article_id, Criminal_name, Criminal_age, Criminal_gender, Criminal_contact, Criminal_address, Criminal_status) VALUES
+(6001, 201, 5001, 'Amir Khan', 40, 'Male', '+92 300 1234567', 'House No. 123, Street No. 5, Satellite Town, Rawalpindi', 'Convicted'),
+(6002, 202, 5001, 'Faisal Ahmed', 35, 'Male', '+92 321 9876543', 'Apartment No. 456, Sector G-9/1, Islamabad', 'Convicted'),
+(6003, 203, 5002, 'Sohail Hassan', 50, 'Male', '+92 333 5554444', 'House no 22, Bahria Town Phase 3, Rawalpindi', 'Under Investigation'),
+(6004, 204, 5003, 'Adeel Malik', 30, 'Male', '+92 334 9876543', 'Gulraiz Housing Society, Rawalpindi', 'Under Investigation'),
+(6005, 205, 5004, 'Khalid Mahmood', 45, 'Male', '+92 300 9876543', 'Street No. 303, Sector G-8, Islamabad', 'Under Investigation'),
+(6006, 206, 5005, 'Tahir Khan', 42, 'Male', '+92 333 1234567', 'House No. 202, Chaklala Scheme 3, Rawalpindi', 'Convicted'),
+(6007, 207, 5006, 'Asad Khan', 28, 'Male', '+92 334 5554444', 'Apartment No. 505, Sector F-11/1, Islamabad', 'Under Investigation'),
+(6008, 208, 5007, 'Nadeem Aslam', 33, 'Male', '+92 321 1234567', 'House No. 707, PWD Housing Scheme, Islamabad', 'Under Investigation'),
+(6009, 209, 5008, 'Bilal Ali', 55, 'Male', '+92 333 9876543', 'House No. 909, Dhoke Syedan, Rawalpindi', 'Convicted'),
+(6010, 210, 5009, 'Rizwan Khan', 26, 'Male', '+92 334 1234567', 'House No. 111, Pakistan Town Phase 1, Rawalpindi', 'Convicted'),
+(6011, 211, 5010, 'Zahid Siddique', 37, 'Male', '+92 300 5554444', 'Street No. 777, G-6/3, Islamabad', 'Under Investigation'),
+(6012, 212, 5011, 'Kamran Akhtar', 29, 'Male', '+92 321 5554444', 'House No. 888, Gulshan-e-Iqbal, Rawalpindi', 'Under Investigation'),
+(6013, 213, 5012, 'Ahsan Malik', 36, 'Male', '+92 333 1234567', 'Apartment No. 999, Centaurus Mall Apartments, Islamabad', 'Under Investigation'),
+(6014, 214, 5013, 'Mubashir Shahzad', 30, 'Male', '+92 334 1234567', 'House No. 333, Shalley Valley, Rawalpindi', 'Under Investigation'),
+(6015, 215, 5014, 'Azeem Ahmed', 48, 'Male', '+92 300 1234567', 'Street No. 505, F-10/3, Islamabad', 'Under Investigation'),
+(6016, 216, 5001, 'Yasir Khan', 52, 'Male', '+92 321 9876543', 'House No. 606, Bahria Town Phase 8, Rawalpindi', 'Under Investigation'),
+(6017, 217, 5002, 'Nasir Malik', 32, 'Male', '+92 333 5554444', 'Apartment No. 707, Sector E-7, Islamabad', 'Convicted'),
+(6018, 218, 5003, 'Zain Naeem', 29, 'Male', '+92 334 9876543', 'House No. 808, Westridge 3, Rawalpindi', 'Under Investigation'),
+(6019, 219, 5004, 'Adnan Shah', 38, 'Male', '+92 300 9876543', 'House No. 909, Diplomatic Enclave, Islamabad', 'Under Investigation'),
+(6020, 220, 5008, 'Faisal Khan', 32, 'Male', '+92 321 1234567', 'House No. 1010, Street No. 12, Chaklala Scheme 3, Rawalpindi', 'Convicted'),
+(6021, 221, 5015, 'Imran Nawaz', 35, 'Male', '+92 333 9876543', 'House No. 1111, Sector G-11/2, Islamabad', 'Under Investigation'),
+(6022, 222, 5011, 'Ali Khalid', 30, 'Male', '+92 334 1234567', 'Apartment No. 1212, Rawalpindi Saddar', 'Convicted'),
+(6023, 223, 5012, 'Samiullah Khan', 42, 'Male', '+92 300 5554444', 'House No. 1313, Street No. 15, G-13/4, Islamabad', 'Under Investigation'),
+(6024, 224, 5013, 'Abdul Rehman', 27, 'Male', '+92 321 5554444', 'House No. 1414, Street No. 20, F-7/1, Islamabad', 'Under Investigation'),
+(6025, 225, 5014, 'Saeed Ahmed', 48, 'Male', '+92 333 1234567', 'House No. 1515, Street No. 25, I-8/2, Islamabad', 'Under Investigation');
+CREATE TABLE Report_Complain (
+    Report_complain_id INT PRIMARY KEY AUTO_INCREMENT,
+    Reporter_CNIC VARCHAR(20),
+    Reporter_name VARCHAR(50),
+    Reporter_Province ENUM('Punjab', 'Sindh', 'Kpk', 'Balochistan', 'Gilgit'),
+    Reporter_City ENUM('Lahore', 'Faisalabad', 'Multan', 'Rawalpindi', 'Gujranwala',
+                       'Karachi', 'Hyderabad', 'Sukkur', 'Larkana', 'Mirpur Khas',
+                       'Peshawar', 'Mardan', 'Abbottabad', 'Swat', 'Kohat',        
+                       'Quetta', 'Khuzdar', 'Gwadar', 'Turbat', 'Sibi',            
+                       'Gilgit', 'Skardu', 'Hunza', 'Nagar', 'Chilas')          
+                       NOT NULL,
+    Reporter_contact VARCHAR(20),
+    Reporter_age INT,
+    Report_type VARCHAR(50),
+    Report_description TEXT
+);
+
